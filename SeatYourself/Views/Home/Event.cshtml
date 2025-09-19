@@ -1,0 +1,20 @@
+﻿@model List<SeatYourself.Models.Event>
+@{
+    ViewData["Title"] = "Events";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@foreach (var i in Model)
+{
+    <div class="event">
+        <h2>@i.Title</h2>
+        <p><b>Description:</b> @i.Description</p>
+        <p><b>Category:</b> @i.Category</p>
+        <p><b>Date:</b> @i.EventDate.ToString("MMMM dd, yyyy")</p>
+        <p><b>Time:</b> @i.EventTime</p>
+        <p><b>Location:</b> @i.Location</p>
+        <p><b>Owner:</b> @i.Owner</p>
+        <p><b>Ticket Created:</b> @i.CreatedAt</p>
+    </div>
+}

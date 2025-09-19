@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Mvc;
 using SeatYourself.Models;
 
@@ -25,7 +26,36 @@ namespace SeatYourself.Controllers
 
         public IActionResult Event()
         {
-            return View();
+            List<Event> events = new List<Event>();
+            DateTime dt = new DateTime(1955, 11, 5, 9, 0, 0);
+            int hour = dt.Hour;
+            int minute = dt.Minute;
+            string timeString = dt.ToString("hh:mm");
+            events.Add(new Event
+            {
+             
+                Title = "First Event",
+                Description = "This is a sample event description.",
+                Category = "Conference",
+                EventDate = new DateTime(1955, 11, 5),
+                EventTime = timeString,
+                Location = "123 Main St, Halifax, NS",
+                Owner = "John Doe",
+                CreatedAt = DateTime.Now
+            });
+            events.Add(new Event
+            {
+
+                Title = "Second Event",
+                Description = "This is a sample event description.",
+                Category = "Concert",
+                EventDate = new DateTime(2025, 11, 5),
+                EventTime = timeString,
+                Location = "246 Main St, Halifax, NS",
+                Owner = "Jane Doe",
+                CreatedAt = DateTime.Now
+            });
+            return View(events);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
