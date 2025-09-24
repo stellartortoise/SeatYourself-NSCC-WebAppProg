@@ -6,5 +6,6 @@
         public char Row { get; set; }
         public int Number { get; set; }
         public bool IsAvailable { get; set; }
+
     }
 }
