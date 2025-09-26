@@ -1,4 +1,9 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using SeatYourself.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<SeatYourselfContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SeatYourselfContext") ?? throw new InvalidOperationException("Connection string 'SeatYourselfContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
