@@ -24,38 +24,38 @@ namespace SeatYourself.Controllers
             return View();
         }
 
-        public IActionResult Event()
+        public IActionResult Occasion()
         {
-            List<Event> events = new List<Event>();
+            List<Occasion> occasions = new List<Occasion>();
             DateTime dt = new DateTime(1955, 11, 5, 9, 0, 0);
             int hour = dt.Hour;
             int minute = dt.Minute;
             string timeString = dt.ToString("hh:mm");
-            events.Add(new Event
+            occasions.Add(new Occasion
             {
              
                 Title = "First Event",
                 Description = "This is a sample event description.",
                 Category = "Conference",
-                EventDate = new DateTime(1955, 11, 5),
-                EventTime = timeString,
+                OccasionDate = new DateTime(1955, 11, 5),
+                OccasionTime = timeString,
                 Location = "123 Main St, Halifax, NS",
                 Owner = "John Doe",
                 CreatedAt = DateTime.Now
             });
-            events.Add(new Event
+            occasions.Add(new Occasion
             {
 
                 Title = "Second Event",
                 Description = "This is a sample event description.",
                 Category = "Concert",
-                EventDate = new DateTime(2025, 11, 5),
-                EventTime = timeString,
+                OccasionDate = new DateTime(2025, 11, 5),
+                OccasionTime = timeString,
                 Location = "246 Main St, Halifax, NS",
                 Owner = "Jane Doe",
                 CreatedAt = DateTime.Now
             });
-            return View(events);
+            return View(occasions);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
