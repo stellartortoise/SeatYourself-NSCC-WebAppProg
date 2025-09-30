@@ -22,9 +22,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Category)
             </th>
-            <th>
+            @* <th>
                 @Html.DisplayNameFor(model => model.Venue)
-            </th>
+            </th> *@
             <th>
                 @Html.DisplayNameFor(model => model.OccasionDate)
             </th>
@@ -59,13 +59,12 @@
                 }
                 @categoryName
             </td>
-            <td>
-                @*@Html.DisplayFor(modelItem => item.Venue)*@
+            @* <td> *@
                 @{
-                    var venueName = ((Occasion.VenueType)item.Venue).ToString();
+                    // var venueName = ((Occasion.VenueType)item.Venue).ToString();
                 }
-                @venueName
-            </td>
+                @* @venueName *@
+            @* </td> *@
             <td>
                 @* @Html.DisplayFor(modelItem => item.OccasionDate) *@
                 @item.OccasionDate.ToString("d")

@@ -50,24 +50,24 @@
             @* @Html.DisplayFor(model => model.Category) *@
             @categoryName
         </dd>
-        <dt class="col-sm-2">
+        @* <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Venue)
-        </dt>
-        <dd class="col-sm-10">
+        </dt> *@
+        @* <dd class="col-sm-10">
             @* @Html.DisplayFor(model => model.Venue) *@
-            @venueName
-        </dd>
+            @* @venueName
+        </dd> *@
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.OccasionDate)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OccasionDate)
+            @Model.OccasionDate.ToString("d")
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.OccasionTime)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OccasionTime)
+            @Model.OccasionTime.ToString("t")
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Location)
