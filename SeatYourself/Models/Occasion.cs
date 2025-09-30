@@ -1,15 +1,39 @@
-﻿namespace SeatYourself.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SeatYourself.Models
 {
     public class Occasion
     {
+        public enum CategoryType
+        {
+            Concert = 1,
+            Theater = 2,
+            Sports = 3,
+            Comedy = 4,
+            Other = 5
+        }
+        public enum VenueType
+        {
+            Stadium = 1,
+            Arena = 2,
+            Theater = 3,
+            Club = 4,
+            Other = 5
+        }
+
+
+        [Display(Name = "ID")]
         public int OccasionId { get; set; }
         public string Title { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
-        public string Category { get; set; } = string.Empty;
+        public int Category { get; set; } //Photo will be assigned based on category
+        public int Venue { get; set; }
         public DateTime OccasionDate { get; set; }
-        public string OccasionTime { get; set; } = string.Empty;
+        public DateTime OccasionTime { get; set; }
         public string Location { get; set; } = string.Empty;
         public string Owner { get; set; } = string.Empty;
+        
+        [Display(Name = "Created")]
         public DateTime CreatedAt { get; set; }
 
         public List<Seat> AvailableSeats { get; set; } = new List<Seat>();
