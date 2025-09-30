@@ -17,13 +17,13 @@
         <p><b>Location:</b> @i.Location</p>
         <p><b>Owner:</b> @i.Owner</p>
         <p><b>Available Seats:</b>
-            @foreach(var s in i.AvailableSeats)
+            @* @foreach(var s in i.AvailableSeats)
             {
                 @if(s.IsAvailable)
                 {
                     @s.Row @s.Number@:,
                 }
-            }
+            } *@
         </p>
         <p><b>Ticket Created:</b> @i.CreatedAt</p>
     </div>
