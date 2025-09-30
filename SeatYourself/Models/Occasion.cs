@@ -26,8 +26,8 @@ namespace SeatYourself.Models
         public int OccasionId { get; set; }
         public string Title { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
-        public int Category { get; set; } //Photo will be assigned based on category
-        public int Venue { get; set; }
+        public CategoryType Category { get; set; } //Photo will be assigned based on category
+        public VenueType Venue { get; set; }
         
         [Display(Name = "Date")]
         public DateTime OccasionDate { get; set; }

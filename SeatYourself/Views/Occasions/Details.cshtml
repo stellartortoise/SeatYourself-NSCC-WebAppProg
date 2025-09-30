@@ -2,6 +2,27 @@
 
 @{
     ViewData["Title"] = "Details";
+
+    // Get enum values as SelectListItems for Category (Used Co-Pilot to help with this)
+    var categoryList = Enum.GetValues(typeof(SeatYourself.Models.Occasion.CategoryType))
+        .Cast<SeatYourself.Models.Occasion.CategoryType>()
+        .Select(e => new SelectListItem
+        {
+            Value = ((int)e).ToString(),
+            Text = e.ToString()
+        }).ToList();
+
+    // Get enum values as SelectListItems for Venue (Used Co-Pilot to help with this)
+    var venueList = Enum.GetValues(typeof(SeatYourself.Models.Occasion.VenueType))
+        .Cast<SeatYourself.Models.Occasion.VenueType>()
+        .Select(e => new SelectListItem
+        {
+            Value = ((int)e).ToString(),
+            Text = e.ToString()
+        }).ToList();
+
+    var categoryName = categoryList.FirstOrDefault(c => c.Value == Model.Category.ToString())?.Text ?? Model.Category.ToString();
+    var venueName = venueList.FirstOrDefault(v => v.Value == Model.Venue.ToString())?.Text ?? Model.Venue.ToString();
 }
 
 <h1>Details</h1>
@@ -26,7 +47,15 @@
             @Html.DisplayNameFor(model => model.Category)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category)
+            @* @Html.DisplayFor(model => model.Category) *@
+            @categoryName
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Venue)
+        </dt>
+        <dd class="col-sm-10">
+            @* @Html.DisplayFor(model => model.Venue) *@
+            @venueName
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.OccasionDate)
