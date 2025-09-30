@@ -28,7 +28,10 @@ namespace SeatYourself.Models
         public string Description { get; set; } = string.Empty;
         public CategoryType Category { get; set; } //Photo will be assigned based on category
         public VenueType Venue { get; set; }
-        
+        // An Occasion belongs to one Venue
+        public int VenueId { get; set; }
+        public virtual Venue? VenueActual { get; set; }
+
         [Display(Name = "Date")]
         public DateTime OccasionDate { get; set; }
         
@@ -40,25 +43,26 @@ namespace SeatYourself.Models
         [ScaffoldColumn(false)] // <-- This will hide the field in the Create and Edit views; interacted with GitHub Copilot to get this
         [Display(Name = "Created")]
         public DateTime CreatedAt { get; set; }
+        public virtual ICollection<Ticket>? Tickets { get; set; }
 
         public List<Seat> AvailableSeats { get; set; } = new List<Seat>();
 
-        public Occasion()
-        {
-            // Initialize AvailableSeats with some default seats
-            for (char row = 'A'; row <= 'D'; row++)
-            {
-                for (int number = 1; number <= 10; number++)
-                {
-                    AvailableSeats.Add(new Seat
-                    {
-                        Row = row,
-                        Number = number,
-                        IsAvailable = true
-                    });
-                }
-            }
-        }
+        //public Occasion()
+        //{
+        //    // Initialize AvailableSeats with some default seats
+        //    for (char row = 'A'; row <= 'D'; row++)
+        //    {
+        //        for (int number = 1; number <= 10; number++)
+        //        {
+        //            AvailableSeats.Add(new Seat
+        //            {
+        //                Row = row,
+        //                Number = number,
+        //                IsAvailable = true
+        //            });
+        //        }
+        //    }
+        //}
 
     }
 }
