@@ -1,22 +1,26 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using SeatYourself.Data;
+using SeatYourself.Models;
 using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.AspNetCore.Mvc;
-using SeatYourself.Models;
 
 namespace SeatYourself.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly SeatYourselfContext _context;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(SeatYourselfContext context, ILogger<HomeController> logger)
         {
+            _context = context;
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await _context.Occasion.ToListAsync());
         }
 
         public IActionResult Privacy()

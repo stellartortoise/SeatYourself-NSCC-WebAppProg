@@ -1,4 +1,60 @@
-﻿@{
+﻿@model List<SeatYourself.Models.Occasion>
+@{
     ViewData["Title"] = "Home Page";
 }
 
+<h2>Upcoming Events</h2>
+
+<div class="row">
+@foreach (var occasion in Model)
+{
+    var categoryPath = "";
+    @switch (occasion.Category)
+    {
+        case SeatYourself.Models.Occasion.CategoryType.Concert:
+            categoryPath = "images/categories/concert.jpg";
+            break;
+        case SeatYourself.Models.Occasion.CategoryType.Sports:
+            categoryPath = "images/categories/stadium.jpg";
+            break;
+        case SeatYourself.Models.Occasion.CategoryType.Theater:
+            categoryPath = "images/categories/theatre.jpg";
+            break;
+        case SeatYourself.Models.Occasion.CategoryType.Comedy:
+            categoryPath = "images/categories/comedian.jpg";
+            break;
+        default:
+            categoryPath = "images/categories/question-mark.jpg";
+            break;
+    }
+
+    <div class="card mb-3 w-50 flex-column">
+        <div class="row g-0 align-items-center">
+            <!-- Image Column -->
+            <div class="col-md-4 text-center">
+                <img class="img-thumbnail w-100" src=@categoryPath />
+            </div>
+
+            <!-- Details Column -->
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h4>@occasion.Title</h4>
+                    <p>@occasion.Description</p>
+                    <p><strong>Date:</strong> @occasion.OccasionDate.ToString("MMMM dd, yyyy")</p>
+                    <p><strong>Time:</strong> @occasion.OccasionTime.ToString("hh:mm tt")</p>
+                    <p><strong>Location:</strong> @occasion.Location</p>
+                </div>
+            </div>
+
+            <!-- Buttons Column -->
+            <div class="ol-md-4 d-flex flex-column justify-content-center">
+                <div class="btn">
+                    <a asp-controller="Occasions" asp-action="Details" asp-route-id="@occasion.OccasionId" class="btn btn-primary m-2">View Details</a>
+                    <a asp-controller="Tickets" asp-action="Create" asp-route-occasionId="@occasion.OccasionId" class="btn btn-success m-2">Get Tickets</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+</div>
