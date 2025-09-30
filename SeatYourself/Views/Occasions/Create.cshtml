@@ -47,13 +47,18 @@
                 <span asp-validation-for="Category" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Venue" class="control-label"></label>
+                @Html.DropDownListFor(model => model.Venue, venueList, "Select Venue", new { @class = "form-control" })
+                <span asp-validation-for="Venue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="OccasionDate" class="control-label"></label>
-                <input asp-for="OccasionDate" class="form-control" />
+                <input asp-for="OccasionDate" class="form-control" type="date"/>
                 <span asp-validation-for="OccasionDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="OccasionTime" class="control-label"></label>
-                <input asp-for="OccasionTime" class="form-control" />
+                <input asp-for="OccasionTime" class="form-control" type="time" />
                 <span asp-validation-for="OccasionTime" class="text-danger"></span>
             </div>
             <div class="form-group">

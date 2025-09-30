@@ -2,9 +2,10 @@
 
 @{
     ViewData["Title"] = "Index";
+
 }
 
-<h1>Index</h1>
+<h1>Events</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -20,6 +21,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Venue)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.OccasionDate)
@@ -49,13 +53,26 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Category)
+                @* @Html.DisplayFor(modelItem => item.Category) *@
+                @{
+                    var categoryName = ((Occasion.CategoryType)item.Category).ToString();
+                }
+                @categoryName
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.OccasionDate)
+                @*@Html.DisplayFor(modelItem => item.Venue)*@
+                @{
+                    var venueName = ((Occasion.VenueType)item.Venue).ToString();
+                }
+                @venueName
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.OccasionTime)
+                @* @Html.DisplayFor(modelItem => item.OccasionDate) *@
+                @item.OccasionDate.ToString("d")
+            </td>
+            <td>
+                @* @Html.DisplayFor(modelItem => item.OccasionTime) *@
+                @item.OccasionTime.ToString("HH:mm")
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Location)
