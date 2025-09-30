@@ -32,7 +32,8 @@ namespace SeatYourself.Models
         public DateTime OccasionTime { get; set; }
         public string Location { get; set; } = string.Empty;
         public string Owner { get; set; } = string.Empty;
-        
+
+        [ScaffoldColumn(false)] // <-- This will hide the field in the Create and Edit views; interacted with GitHub Copilot to get this
         [Display(Name = "Created")]
         public DateTime CreatedAt { get; set; }
 

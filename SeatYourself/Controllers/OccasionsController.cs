@@ -58,6 +58,7 @@ namespace SeatYourself.Controllers
         {
             if (ModelState.IsValid)
             {
+                occasion.CreatedAt = DateTime.Now; // Set CreatedAt to current date and time automatically; interacted with GitHub Copilot to get this
                 _context.Add(occasion);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
