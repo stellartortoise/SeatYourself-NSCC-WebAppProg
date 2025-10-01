@@ -14,13 +14,15 @@
             @Html.DisplayNameFor(model => model.vOccasion)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.vOccasion.OccasionId)
+            @* @Html.DisplayFor(model => model.vOccasion.OccasionId) *@
+            @Model.vOccasion?.OccasionId
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.vSeat)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.vSeat.SeatId)
+            @* @Html.DisplayFor(model => model.vSeat.SeatId) *@
+            @Model.vSeat?.SeatId
         </dd>
     </dl>
 </div>

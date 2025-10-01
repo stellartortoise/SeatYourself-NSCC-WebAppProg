@@ -22,7 +22,7 @@
         }).ToList();
 
     var categoryName = categoryList.FirstOrDefault(c => c.Value == Model.Category.ToString())?.Text ?? Model.Category.ToString();
-    var venueName = venueList.FirstOrDefault(v => v.Value == Model.Venue.ToString())?.Text ?? Model.Venue.ToString();
+    var venueName = venueList.FirstOrDefault(v => v.Value == Model.VenueId.ToString())?.Text ?? Model.VenueId.ToString();
 }
 
 <h1>Details</h1>

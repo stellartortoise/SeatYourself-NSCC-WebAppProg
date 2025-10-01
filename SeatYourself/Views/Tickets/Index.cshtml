@@ -25,10 +25,12 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.vOccasion.OccasionId)
+                @* @Html.DisplayFor(modelItem => item.vOccasion.OccasionId) *@
+                @item.vOccasion?.OccasionId
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.vSeat.SeatId)
+                @* @Html.DisplayFor(modelItem => item.vSeat.SeatId) *@
+                @item.vSeat?.SeatId
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.TicketId">Edit</a> |
