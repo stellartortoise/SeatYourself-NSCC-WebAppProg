@@ -54,7 +54,7 @@ namespace SeatYourself.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OccasionId,Title,Description,Category,Venue,VenueId,OccasionDate,OccasionTime,Location,Owner,CreatedAt")] Occasion occasion)
+        public async Task<IActionResult> Create([Bind("OccasionId,Title,Description,Category,VenueId,OccasionDate,OccasionTime,Location,Owner,CreatedAt")] Occasion occasion)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace SeatYourself.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OccasionId,Title,Description,Category,Venue,OccasionDate,OccasionTime,Location,Owner,CreatedAt")] Occasion occasion)
+        public async Task<IActionResult> Edit(int id, [Bind("OccasionId,Title,Description,Category,VenueId,OccasionDate,OccasionTime,Location,Owner,CreatedAt")] Occasion occasion)
         {
             if (id != occasion.OccasionId)
             {
