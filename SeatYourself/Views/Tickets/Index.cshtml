@@ -26,11 +26,11 @@
         <tr>
             <td>
                 @* @Html.DisplayFor(modelItem => item.vOccasion.OccasionId) *@
-                @item.vOccasion?.OccasionId
+                @item.vOccasion?.OccasionId @*Added a @foreach loop to iterate through the IEnumerable<Ticket> model, allowing access to properties on each individual ticket rather than on the collection itself.*@
             </td>
             <td>
                 @* @Html.DisplayFor(modelItem => item.vSeat.SeatId) *@
-                @item.vSeat?.SeatId
+                    @item.vSeat?.SeatId @*Added a @foreach loop to iterate through the IEnumerable<Ticket> model, allowing access to properties on each individual ticket rather than on the collection itself.*@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.TicketId">Edit</a> |

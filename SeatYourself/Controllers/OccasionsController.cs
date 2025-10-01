@@ -22,7 +22,12 @@ namespace SeatYourself.Controllers
         // GET: Occasions
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Occasion.ToListAsync());
+            var occasions = await _context.Occasion
+                .OrderByDescending(m => m.CreatedAt)
+                //.Include(o => o.Category) //<-- Causing Error
+                .ToListAsync();
+
+            return View(occasions);
         }
 
         // GET: Occasions/Details/5
@@ -46,6 +51,8 @@ namespace SeatYourself.Controllers
         // GET: Occasions/Create
         public IActionResult Create()
         {
+            ViewData["Category"] = new SelectList(_context.Set<Occasion>(), "Category", "Category");
+
             return View();
         }
 
@@ -54,13 +61,14 @@ namespace SeatYourself.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OccasionId,Title,Description,Category,VenueId,OccasionDate,OccasionTime,Location,Owner,CreatedAt")] Occasion occasion)
+        public async Task<IActionResult> Create([Bind("OccasionId,Title,Description,Category,VenueId,OccasionDate,OccasionTime,Location,Owner")] Occasion occasion)
         {
+            occasion.CreatedAt = DateTime.Now; 
+
             if (ModelState.IsValid)
             {
-                occasion.CreatedAt = DateTime.Now; // Set CreatedAt to current date and time automatically; interacted with GitHub Copilot to get this
-                                                   
-                occasion.VenueId = 1; // Force every new occasion to belong to Venue #1 <-- Temporary line for testing, will be removed later when Tickets and Venues are implemented
+                                                               
+                //occasion.VenueId = 1; // Force every new occasion to belong to Venue #1 <-- Temporary line for testing, will be removed later when Tickets and Venues are implemented
 
                 _context.Add(occasion);
                 await _context.SaveChangesAsync();
