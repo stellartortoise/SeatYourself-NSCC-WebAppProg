@@ -54,11 +54,14 @@ namespace SeatYourself.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OccasionId,Title,Description,Category,Venue,OccasionDate,OccasionTime,Location,Owner,CreatedAt")] Occasion occasion)
+        public async Task<IActionResult> Create([Bind("OccasionId,Title,Description,Category,Venue,VenueId,OccasionDate,OccasionTime,Location,Owner,CreatedAt")] Occasion occasion)
         {
             if (ModelState.IsValid)
             {
                 occasion.CreatedAt = DateTime.Now; // Set CreatedAt to current date and time automatically; interacted with GitHub Copilot to get this
+                                                   
+                occasion.VenueId = 1; // Force every new occasion to belong to Venue #1 <-- Temporary line for testing, will be removed later when Tickets and Venues are implemented
+
                 _context.Add(occasion);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

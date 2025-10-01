@@ -15,5 +15,6 @@ namespace SeatYourself.Data
         }
 
         public DbSet<SeatYourself.Models.Occasion> Occasion { get; set; } = default!;
+        public DbSet<SeatYourself.Models.Ticket> Ticket { get; set; } = default!;
     }
 }
